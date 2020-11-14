@@ -9,9 +9,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: MainPage(),
       routes: <String, WidgetBuilder> {
-        '/home': (BuildContext context) => new MainPage(),
-        '/subpage': (BuildContext context) => new SubPage(),
-        '/subpage2': (BuildContext context) => new SubPage2()
+        '/home': (BuildContext context) =>  MainPage(),
+        '/subpage': (BuildContext context) =>  SubPage(),
+        '/subpage2': (BuildContext context) =>  SubPage2(),
+        '/subpage3': (BuildContext context) =>  SubPage2()
+
       },
     );
   }
@@ -19,18 +21,25 @@ class MyApp extends StatelessWidget {
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Navigator'),
+    return  Scaffold(
+      appBar:  AppBar(
+        title:  Text('塾'),
       ),
-      body: new Container(
-        padding: new EdgeInsets.all(32.0),
-        child: new Center(
-          child: new Column(
+      body:
+
+      Container(
+        padding:  EdgeInsets.all(32.0),
+
+        child:  Center(
+
+          child:  Column(
             children: <Widget>[
+
               Text('Main'),
-              RaisedButton(onPressed: () => Navigator.of(context).pushNamed("/subpage"), child: new Text('Subページへ'),),
-              RaisedButton(onPressed: () => Navigator.of(context).pushNamed("/subpage2"), child: new Text('Subページ2へ'),)
+              RaisedButton(onPressed: () => Navigator.of(context).pushNamed("/subpage"), child:  Text('Subページへ'),),
+              RaisedButton(onPressed: () => Navigator.of(context).pushNamed("/subpage2"), child: Text('Subページ2へ'),),
+              RaisedButton(onPressed: () => Navigator.of(context).pushNamed("/subpage3"), child: Text('Subページ3へ'),)
+
             ],
           ),
         ),
@@ -38,45 +47,97 @@ class MainPage extends StatelessWidget {
     );
   }
 }
+
+
+// リストビューの中にそのままアイコンなどを入れた
 class SubPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Navigator'),
+    return Scaffold(
+      appBar:  AppBar(
+        title: Text('国語'),
       ),
-      body: new Container(
-        padding: new EdgeInsets.all(32.0),
-        child: new Center(
-          child: new Column(
-            children: <Widget>[
-              Text('Sub'),
-              RaisedButton(onPressed: () => Navigator.of(context).pop(), child: new Text('戻る'),)
-            ],
+      body:
+      ListView(
+        children: <Widget>[
+          ListTile(
+            leading: Icon(Icons.g_translate),
+            title: Text("Google"),
           ),
-        ),
+          ListTile(
+            leading: Icon(Icons.computer),
+            title: Text("Dart"),
+          ),
+          ListTile(
+            leading: Icon(Icons.mobile_screen_share),
+            title: Text("Flutter"),
+            trailing:  IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.brightness_1_outlined),
+          ),
+
+
+
+
+          ),
+        ],
       ),
+
     );
   }
 }
+
+// ほぼ参考にしたコードのまま
 class SubPage2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Navigator'),
+    return Scaffold(
+      appBar:  AppBar(
+        title: Text('数学'),
       ),
-      body: new Container(
-        padding: new EdgeInsets.all(32.0),
-        child: new Center(
-          child: new Column(
+      body:
+      Container(
+
+        padding:  EdgeInsets.all(32.0),
+        child:  Center(
+          child: Column(
             children: <Widget>[
               Text('Sub2'),
-              RaisedButton(onPressed: () => Navigator.of(context).pop(), child: new Text('戻る'),)
+              RaisedButton(onPressed: () => Navigator.of(context).pop(), child: Text('戻る'),)
             ],
           ),
         ),
       ),
+
     );
   }
 }
+
+class SubPage3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar:  AppBar(
+        title: Text('英語'),
+      ),
+      body:
+      Container(
+
+        padding:  EdgeInsets.all(32.0),
+        child:  Center(
+          child: Column(
+            children: <Widget>[
+              Text('Sub3'),
+              RaisedButton(onPressed: () => Navigator.of(context).pop(), child: Text('戻る'),)
+            ],
+          ),
+        ),
+      ),
+
+    );
+  }
+}
+
+
+
+
